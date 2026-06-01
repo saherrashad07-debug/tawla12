@@ -8,9 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{--wood:#4a1e08;--wood2:#7a3d1a;--felt:#1a6b2a;--gold:#D4AF37;--gold2:#f0d060;--cream:#f5f0e1}
+:root{--wood:#4a1e08;--wood2:#7a3d1a;--felt:#1a6b2a;--gold:#D4AF37;--gold2:#f0d060}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow-x:hidden;color:#fff}
+
 .menu{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(ellipse at 50% 40%,rgba(26,107,42,.18),transparent 70%),linear-gradient(#140c04,#0a0604);padding:20px;position:relative}
 .menu::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='rgba(212,175,55,0.025)' stroke-width='1'/%3E%3C/svg%3E");pointer-events:none}
 .logo{font-size:clamp(42px,10vw,68px);font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
@@ -23,6 +24,7 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 .btn-sm{padding:8px 16px;font-size:13px;border-radius:8px}
 .btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
 .menu-btns{display:flex;flex-direction:column;gap:10px;width:min(300px,85vw)}
+
 .lobby{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(ellipse at 50% 40%,rgba(26,107,42,.12),transparent 70%),#0a0604;padding:20px}
 .lobby-card{background:rgba(255,255,255,.03);border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:24px 28px;text-align:center;max-width:380px;width:90%}
 .lobby-card h3{color:var(--gold);font-size:18px;margin-bottom:10px}
@@ -32,21 +34,24 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 @keyframes spin{to{transform:rotate(360deg)}}
 .join-input{background:rgba(0,0,0,.5);border:2px solid rgba(212,175,55,.25);border-radius:10px;padding:10px 16px;color:#fff;font-family:'Cairo',sans-serif;font-size:22px;font-weight:700;text-align:center;letter-spacing:5px;width:100%;max-width:220px;outline:none}
 .join-input:focus{border-color:var(--gold)}
+
 .game-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:8px;background:radial-gradient(ellipse at 50% 50%,rgba(26,107,42,.08),transparent 60%),#0a0604}
 .game-header{display:flex;align-items:center;justify-content:space-between;width:min(820px,96vw);margin-bottom:4px;padding:0 4px}
 .player-tag{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;transition:all .3s}
-.player-tag.w{background:rgba(240,240,240,.1);color:#ddd;border:1px solid rgba(255,255,255,.15)}
-.player-tag.b{background:rgba(0,0,0,.4);color:#999;border:1px solid rgba(255,255,255,.08)}
+.player-tag.w{background:rgba(240,240,240,.1);color:#ddd;border:1.5px solid rgba(255,255,255,.15)}
+.player-tag.b{background:rgba(0,0,0,.4);color:#999;border:1.5px solid rgba(255,255,255,.08)}
 .player-tag.active{box-shadow:0 0 14px rgba(212,175,55,.45);border-color:var(--gold)!important}
 .player-tag .dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
 .player-tag.w .dot{background:linear-gradient(135deg,#fff,#ccc);border:1px solid #aaa}
 .player-tag.b .dot{background:linear-gradient(135deg,#444,#111);border:1px solid #555}
-.tag-info{font-size:11px;opacity:.6;margin-right:2px}
+.tag-info{font-size:11px;opacity:.65;margin-right:2px}
 #boardCanvas{max-width:96vw;max-height:68vh;cursor:pointer;border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
 .game-footer{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;flex-wrap:wrap}
 .turn-msg{font-size:13px;font-weight:700;color:var(--gold);text-align:center;min-height:20px}
+
 .toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-100px);background:rgba(0,0,0,.92);color:#fff;padding:9px 24px;border-radius:9px;font-size:13px;font-weight:700;border:1px solid var(--gold);z-index:1000;transition:transform .4s ease;white-space:nowrap;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
+
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(4px)}
 .modal{background:linear-gradient(135deg,#1a0f05,#2a1a0a);border:2px solid var(--gold);border-radius:14px;padding:24px 28px;text-align:center;max-width:360px;width:90%;box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .modal h2{font-size:22px;font-weight:900;color:var(--gold);margin-bottom:6px}
@@ -60,7 +65,6 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 </head>
 <body>
 
-<!-- ===== القائمة ===== -->
 <div id="menuScreen" class="menu">
 <div class="logo">طاولة زهر</div>
 <div class="sub">العب مع صاحبك أونلاين</div>
@@ -71,7 +75,6 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 </div>
 </div>
 
-<!-- ===== إنشاء غرفة ===== -->
 <div id="createScreen" class="lobby hidden">
 <div class="lobby-card">
 <h3><i class="fas fa-wifi"></i> غرفتك جاهزة</h3>
@@ -84,7 +87,6 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 <button class="btn btn-outline btn-sm" onclick="backToMenu()"><i class="fas fa-arrow-right"></i> رجوع</button>
 </div>
 
-<!-- ===== الانضمام ===== -->
 <div id="joinScreen" class="lobby hidden">
 <div class="lobby-card">
 <h3><i class="fas fa-sign-in-alt"></i> انضم لغرفة</h3>
@@ -98,12 +100,11 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 <button class="btn btn-outline btn-sm" onclick="backToMenu()"><i class="fas fa-arrow-right"></i> رجوع</button>
 </div>
 
-<!-- ===== اللعبة ===== -->
 <div id="gameScreen" class="game-wrap hidden">
 <div class="game-header">
-<div class="player-tag b" id="blackTag"><div class="dot"></div><span>الأسود</span><span class="tag-info" id="bInfo">خارج:15</span></div>
+<div class="player-tag b" id="blackTag"><div class="dot"></div><span>الأسود</span><span class="tag-info" id="bInfo"></span></div>
 <div class="turn-msg" id="turnMsg">ارمي الزهر</div>
-<div class="player-tag w" id="whiteTag"><span>الأبيض</span><div class="dot"></div><span class="tag-info" id="wInfo">خارج:15</span></div>
+<div class="player-tag w" id="whiteTag"><span>الأبيض</span><div class="dot"></div><span class="tag-info" id="wInfo"></span></div>
 </div>
 <canvas id="boardCanvas" width="820" height="520"></canvas>
 <div class="game-footer">
@@ -113,7 +114,6 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 </div>
 </div>
 
-<!-- نافذة تحديد من يبدأ -->
 <div id="initModal" class="modal-bg hidden">
 <div class="modal">
 <h2>مين يبدأ؟</h2>
@@ -128,7 +128,6 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 </div>
 </div>
 
-<!-- نهاية اللعبة -->
 <div id="gameOverModal" class="modal-bg hidden">
 <div class="modal">
 <h2 id="goTitle">انتهت اللعبة</h2>
@@ -144,30 +143,29 @@ body{font-family:'Cairo',sans-serif;background:#0a0604;min-height:100vh;overflow
 
 <script>
 /* ===== ثوابت الرقعة ===== */
-const W=820,H=520,FR=14,BAR=44,TRAY=42;
-const PW=(W-2*FR-BAR-TRAY)/12; // عرض المثلث
-const PH=195; // طول المثلث
-const CR=PW/2-3; // نصف قطر الحجر
-const C={fr:'#4a1e08',fr2:'#7a3d1a',felt:'#1a6b2a',t1:'#d4a574',t2:'#8b3a2f',bar:'#3a1608',tray:'#3a1608'};
+const CW=820,CH=520,FR=14,BAR=46,TRAY=44;
+const PW=(CW-2*FR-BAR-TRAY)/12;
+const PH=195,CR=PW/2-3;
+const CC={fr:'#4a1e08',fr2:'#7a3d1a',felt:'#1a6b2a',t1:'#d4a574',t2:'#8b3a2f',barC:'#3a1608',trayC:'#3a1608'};
 
 /* ===== حالة اللعبة ===== */
 let G={
-    pts:Array.from({length:24},()=>({c:null,n:0})),
-    bar:{w:15,b:15}, off:{w:0,b:0},
-    turn:'w', dice:[], ml:[], phase:'init',
-    sel:-1, validDests:[], moveStack:[],
-    myColor:null, isOnline:false,
-    peer:null, conn:null, roomCode:'',
-    initStep:0, initRolls:{w:0,b:0}
+    pts:[],off:{w:0,b:0},turn:'w',dice:[],ml:[],
+    phase:'init',sel:-1,validDests:[],moveStack:[],
+    myColor:null,isOnline:false,peer:null,conn:null,roomCode:'',
+    initStep:0,initRolls:{w:0,b:0}
 };
 
 /* ===== تهيئة ===== */
 function initBoard(){
     G.pts=Array.from({length:24},()=>({c:null,n:0}));
-    G.bar={w:15,b:15}; G.off={w:0,b:0};
-    G.dice=[]; G.ml=[]; G.phase='init';
-    G.sel=-1; G.validDests=[]; G.moveStack=[];
-    G.initStep=0; G.initRolls={w:0,b:0};
+    /* الأبيض كله على النقطة 24 (أعلى يمين) - مؤشر 23 */
+    G.pts[23]={c:'w',n:15};
+    /* الأسود كله على النقطة 1 (أسفل يمين) - مؤشر 0 */
+    G.pts[0]={c:'b',n:15};
+    G.off={w:0,b:0};G.dice=[];G.ml=[];G.phase='init';
+    G.sel=-1;G.validDests=[];G.moveStack=[];
+    G.initStep=0;G.initRolls={w:0,b:0};
 }
 
 /* ===== رسم الرقعة ===== */
@@ -175,134 +173,118 @@ const cv=document.getElementById('boardCanvas');
 const cx=cv.getContext('2d');
 
 function ptVis(i){
-    let isTop=i>=12, col=isTop?i-12:11-i;
-    let x;
-    if(col<6) x=FR+col*PW+PW/2;
-    else x=FR+6*PW+BAR+(col-6)*PW+PW/2;
+    let isTop=i>=12,col=isTop?i-12:11-i;
+    let x=col<6?FR+col*PW+PW/2:FR+6*PW+BAR+(col-6)*PW+PW/2;
     return{x,isTop,col};
 }
 
 function render(){
-    cx.clearRect(0,0,W,H);
-    drawBoard(); drawTriangles(); drawCheckers(); drawBarCheckers(); drawTray(); drawDice(); drawHighlights();
+    cx.clearRect(0,0,CW,CH);
+    drawBoard();drawTriangles();drawCheckers();drawTray();drawDice();drawHighlights();
     updateUI();
 }
 
 function drawBoard(){
-    // إطار خشبي
-    cx.fillStyle=C.fr; cx.fillRect(0,0,W,H);
-    cx.fillStyle=C.fr2; cx.fillRect(3,3,W-6,H-6);
-    cx.fillStyle=C.fr; cx.fillRect(6,6,W-12,H-12);
-    // سطح اللعب الأخضر
-    cx.fillStyle=C.felt; cx.fillRect(FR,FR,W-2*FR-TRAY,H-2*FR);
-    // البار
-    cx.fillStyle=C.bar; cx.fillRect(FR+6*PW,FR,BAR,H-2*FR);
-    // خط فاصل نص
-    cx.strokeStyle='rgba(212,175,55,0.12)'; cx.lineWidth=1;
-    cx.beginPath(); cx.moveTo(FR,H/2); cx.lineTo(FR+6*PW,H/2); cx.stroke();
-    cx.beginPath(); cx.moveTo(FR+6*PW+BAR,H/2); cx.lineTo(W-FR-TRAY,H/2); cx.stroke();
+    cx.fillStyle=CC.fr;cx.fillRect(0,0,CW,CH);
+    cx.fillStyle=CC.fr2;cx.fillRect(3,3,CW-6,CH-6);
+    cx.fillStyle=CC.fr;cx.fillRect(6,6,CW-12,CH-12);
+    cx.fillStyle=CC.felt;cx.fillRect(FR,FR,CW-2*FR-TRAY,CH-2*FR);
+    cx.fillStyle=CC.barC;cx.fillRect(FR+6*PW,FR,BAR,CH-2*FR);
+    /* خط فاصل نص */
+    cx.strokeStyle='rgba(212,175,55,0.1)';cx.lineWidth=1;
+    cx.beginPath();cx.moveTo(FR,CH/2);cx.lineTo(FR+6*PW,CH/2);cx.stroke();
+    cx.beginPath();cx.moveTo(FR+6*PW+BAR,CH/2);cx.lineTo(CW-FR-TRAY,CH/2);cx.stroke();
 }
 
 function drawTriangles(){
     for(let i=0;i<24;i++){
         let{x,isTop,col}=ptVis(i);
-        let c=col%2===0?C.t1:C.t2;
         cx.beginPath();
         if(isTop){cx.moveTo(x-PW/2+2,FR);cx.lineTo(x+PW/2-2,FR);cx.lineTo(x,FR+PH);}
-        else{cx.moveTo(x-PW/2+2,H-FR);cx.lineTo(x+PW/2-2,H-FR);cx.lineTo(x,H-FR-PH);}
-        cx.closePath(); cx.fillStyle=c; cx.fill();
+        else{cx.moveTo(x-PW/2+2,CH-FR);cx.lineTo(x+PW/2-2,CH-FR);cx.lineTo(x,CH-FR-PH);}
+        cx.closePath();cx.fillStyle=col%2===0?CC.t1:CC.t2;cx.fill();
     }
 }
 
-function drawChecker(px,py,color,small){
-    let r=small?CR*0.7:CR;
-    // ظل
-    cx.beginPath(); cx.arc(px+1,py+2,r,0,Math.PI*2); cx.fillStyle='rgba(0,0,0,0.3)'; cx.fill();
-    // الحجر
-    cx.beginPath(); cx.arc(px,py,r,0,Math.PI*2);
+function drawChecker(px,py,color,rad){
+    let r=rad||CR;
+    cx.beginPath();cx.arc(px+1,py+2,r,0,Math.PI*2);cx.fillStyle='rgba(0,0,0,0.3)';cx.fill();
+    cx.beginPath();cx.arc(px,py,r,0,Math.PI*2);
     let g=cx.createRadialGradient(px-r/3,py-r/3,0,px,py,r);
-    if(color==='w'){g.addColorStop(0,'#ffffff');g.addColorStop(1,'#c0c0c0');}
+    if(color==='w'){g.addColorStop(0,'#ffffff');g.addColorStop(1,'#bbbbbb');}
     else{g.addColorStop(0,'#555555');g.addColorStop(1,'#111111');}
-    cx.fillStyle=g; cx.fill();
-    cx.strokeStyle=color==='w'?'#aaa':'#333'; cx.lineWidth=1.5; cx.stroke();
-    // حلقة
-    cx.beginPath(); cx.arc(px,py,r*0.5,0,Math.PI*2);
-    cx.strokeStyle=color==='w'?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.08)'; cx.lineWidth=1; cx.stroke();
+    cx.fillStyle=g;cx.fill();
+    cx.strokeStyle=color==='w'?'#999':'#333';cx.lineWidth=1.5;cx.stroke();
+    cx.beginPath();cx.arc(px,py,r*0.5,0,Math.PI*2);
+    cx.strokeStyle=color==='w'?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.08)';cx.lineWidth=1;cx.stroke();
 }
 
 function drawCheckers(){
     for(let i=0;i<24;i++){
-        let p=G.pts[i]; if(!p.n) continue;
+        let p=G.pts[i];if(!p.n)continue;
         let{x,isTop}=ptVis(i);
         let cnt=Math.min(p.n,5);
+        /* لو أكتر من 5 بنصغر المسافة بينهم */
+        let gap=p.n>5?Math.min((CR*2-2),(PH-CR*2)/(p.n-1)):CR*2-2;
         for(let j=0;j<cnt;j++){
             let cy;
-            if(isTop) cy=FR+CR+3+j*(CR*2-2);
-            else cy=H-FR-CR-3-j*(CR*2-2);
+            if(isTop)cy=FR+CR+3+j*gap;
+            else cy=CH-FR-CR-3-j*gap;
             drawChecker(x,cy,p.c);
         }
-        if(p.n>5){
-            let cy=isTop?FR+CR+3+4*(CR*2-2):H-FR-CR-3-4*(CR*2-2);
-            cx.fillStyle=p.c==='w'?'#000':'#fff'; cx.font='bold 12px Cairo'; cx.textAlign='center'; cx.textBaseline='middle';
+        /* رقم العدد */
+        if(p.n>1){
+            let cy=isTop?FR+CR+3+(cnt-1)*gap:CH-FR-CR-3-(cnt-1)*gap;
+            cx.fillStyle=p.c==='w'?'rgba(0,0,0,0.7)':'rgba(255,255,255,0.8)';
+            cx.font='bold 13px Cairo';cx.textAlign='center';cx.textBaseline='middle';
             cx.fillText(p.n,x,cy);
         }
     }
 }
 
-function drawBarCheckers(){
-    let bx=FR+6*PW+BAR/2;
-    // أبيض على البار (النصف السفلي - لأن الأبيض بيدخل من فوق)
-    let wn=Math.min(G.bar.w,4);
-    for(let j=0;j<wn;j++) drawChecker(bx,H/2+15+j*(CR*2-2),'w',G.bar.w>4);
-    if(G.bar.w>4){cx.fillStyle='#000';cx.font='bold 11px Cairo';cx.textAlign='center';cx.fillText(G.bar.w,bx,H/2+15+(wn-1)*(CR*2-2));}
-    // أسود على البار (النصف العلوي)
-    let bn=Math.min(G.bar.b,4);
-    for(let j=0;j<bn;j++) drawChecker(bx,H/2-15-j*(CR*2-2),'b',G.bar.b>4);
-    if(G.bar.b>4){cx.fillStyle='#fff';cx.font='bold 11px Cairo';cx.textAlign='center';cx.fillText(G.bar.b,bx,H/2-15-(bn-1)*(CR*2-2));}
-}
-
 function drawTray(){
-    let tx=W-FR-TRAY;
-    cx.fillStyle=C.tray; cx.fillRect(tx,FR,TRAY,H-2*FR);
-    cx.fillStyle='#4a2208'; cx.fillRect(tx+2,FR+2,TRAY-4,H-2*FR-4);
-    // أحجار خارج
+    let tx=CW-FR-TRAY;
+    cx.fillStyle=CC.trayC;cx.fillRect(tx,FR,TRAY,CH-2*FR);
+    cx.fillStyle='#4a2208';cx.fillRect(tx+2,FR+2,TRAY-4,CH-2*FR-4);
+    /* أحجار الأبيض خارج (أسفل الصينية) */
     if(G.off.w>0){
-        for(let j=0;j<Math.min(G.off.w,5);j++){
-            let cy=H-FR-14-j*14;
-            cx.fillStyle='#ddd'; cx.fillRect(tx+8,cy-5,TRAY-16,10);
-            cx.strokeStyle='#aaa'; cx.lineWidth=1; cx.strokeRect(tx+8,cy-5,TRAY-16,10);
+        for(let j=0;j<Math.min(G.off.w,8);j++){
+            let cy=CH-FR-10-j*11;
+            cx.fillStyle='#ddd';cx.fillRect(tx+6,cy-4,TRAY-12,9);
+            cx.strokeStyle='#aaa';cx.lineWidth=.5;cx.strokeRect(tx+6,cy-4,TRAY-12,9);
         }
-        cx.fillStyle='#000'; cx.font='bold 12px Cairo'; cx.textAlign='center';
-        cx.fillText(G.off.w,tx+TRAY/2,H-FR-14-Math.min(G.off.w,5)*14-10);
+        cx.fillStyle='#000';cx.font='bold 12px Cairo';cx.textAlign='center';
+        cx.fillText(G.off.w,tx+TRAY/2,CH-FR-10-Math.min(G.off.w,8)*11-10);
     }
+    /* أحجار الأسود خارج (أعلى الصينية) */
     if(G.off.b>0){
-        for(let j=0;j<Math.min(G.off.b,5);j++){
-            let cy=FR+14+j*14;
-            cx.fillStyle='#222'; cx.fillRect(tx+8,cy-5,TRAY-16,10);
-            cx.strokeStyle='#444'; cx.lineWidth=1; cx.strokeRect(tx+8,cy-5,TRAY-16,10);
+        for(let j=0;j<Math.min(G.off.b,8);j++){
+            let cy=FR+10+j*11;
+            cx.fillStyle='#222';cx.fillRect(tx+6,cy-4,TRAY-12,9);
+            cx.strokeStyle='#444';cx.lineWidth=.5;cx.strokeRect(tx+6,cy-4,TRAY-12,9);
         }
-        cx.fillStyle='#fff'; cx.font='bold 12px Cairo'; cx.textAlign='center';
-        cx.fillText(G.off.b,tx+TRAY/2,FR+14+Math.min(G.off.b,5)*14+10);
+        cx.fillStyle='#fff';cx.font='bold 12px Cairo';cx.textAlign='center';
+        cx.fillText(G.off.b,tx+TRAY/2,FR+10+Math.min(G.off.b,8)*11+10);
     }
 }
 
 function drawDice(){
-    if(G.dice.length<2) return;
-    let mx=FR+6*PW+BAR/2, my=H/2;
+    if(G.dice.length<2)return;
+    let mx=FR+6*PW+BAR/2,my=CH/2;
     drawOneDie(mx-26,my-16,32,G.dice[0],!G.ml.includes(G.dice[0]));
     drawOneDie(mx+4,my-16,32,G.dice[1],!G.ml.includes(G.dice[1]));
     if(G.dice[0]===G.dice[1]&&G.ml.length>0){
-        cx.fillStyle='#D4AF37'; cx.font='bold 12px Cairo'; cx.textAlign='center';
+        cx.fillStyle='#D4AF37';cx.font='bold 12px Cairo';cx.textAlign='center';
         cx.fillText('×'+G.ml.length,mx,my+26);
     }
 }
 
 function drawOneDie(x,y,sz,val,used){
     cx.globalAlpha=used?0.25:1;
-    cx.fillStyle='#fff'; cx.strokeStyle='#555'; cx.lineWidth=2;
-    rRect(cx,x,y,sz,sz,4); cx.fill(); cx.stroke();
+    cx.fillStyle='#fff';cx.strokeStyle='#555';cx.lineWidth=2;
+    rRect(cx,x,y,sz,sz,4);cx.fill();cx.stroke();
     cx.fillStyle='#222';
-    let c=x+sz/2, cy=y+sz/2, o=sz*.25, d=sz/9;
+    let c=x+sz/2,cy=y+sz/2,o=sz*.25,d=sz/9;
     let dots={1:[[0,0]],2:[[-1,-1],[1,1]],3:[[-1,-1],[0,0],[1,1]],4:[[-1,-1],[1,-1],[-1,1],[1,1]],5:[[-1,-1],[1,-1],[0,0],[-1,1],[1,1]],6:[[-1,-1],[1,-1],[-1,0],[1,0],[-1,1],[1,1]]};
     for(let[dx,dy]of dots[val]){cx.beginPath();cx.arc(c+dx*o,cy+dy*o,d,0,Math.PI*2);cx.fill();}
     cx.globalAlpha=1;
@@ -311,28 +293,27 @@ function drawOneDie(x,y,sz,val,used){
 function rRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.lineTo(x+w-r,y);c.quadraticCurveTo(x+w,y,x+w,y+r);c.lineTo(x+w,y+h-r);c.quadraticCurveTo(x+w,y+h,x+w-r,y+h);c.lineTo(x+r,y+h);c.quadraticCurveTo(x,y+h,x,y+h-r);c.lineTo(x,y+r);c.quadraticCurveTo(x,y,x+r,y);c.closePath();}
 
 function drawHighlights(){
-    // تمييز المختار
-    if(G.sel!==-1&&G.sel!=='bar'){
+    if(G.sel!==-1){
         let{x,isTop}=ptVis(G.sel);
-        let p=G.pts[G.sel], j=Math.min(p.n-1,4);
-        let cy=isTop?FR+CR+3+j*(CR*2-2):H-FR-CR-3-j*(CR*2-2);
-        cx.beginPath();cx.arc(x,cy,CR+5,0,Math.PI*2);cx.strokeStyle='#D4AF37';cx.lineWidth=3;cx.stroke();
+        let p=G.pts[G.sel];
+        if(p.n>0){
+            let cnt=Math.min(p.n,5);
+            let gap=p.n>5?Math.min((CR*2-2),(PH-CR*2)/(p.n-1)):CR*2-2;
+            let j=cnt-1;
+            let cy=isTop?FR+CR+3+j*gap:CH-FR-CR-3-j*gap;
+            cx.beginPath();cx.arc(x,cy,CR+5,0,Math.PI*2);cx.strokeStyle='#D4AF37';cx.lineWidth=3;cx.stroke();
+            cx.beginPath();cx.arc(x,cy,CR+7,0,Math.PI*2);cx.strokeStyle='rgba(212,175,55,0.25)';cx.lineWidth=2;cx.stroke();
+        }
     }
-    if(G.sel==='bar'){
-        let bx=FR+6*PW+BAR/2;
-        let cy=G.turn==='w'?H/2+15:H/2-15;
-        cx.beginPath();cx.arc(bx,cy,CR+5,0,Math.PI*2);cx.strokeStyle='#D4AF37';cx.lineWidth=3;cx.stroke();
-    }
-    // الأماكن المتاحة
     for(let d of G.validDests){
         if(d.to==='off'){
-            let tx=W-FR-TRAY;
-            cx.fillStyle='rgba(100,255,100,0.2)'; cx.fillRect(tx,FR,TRAY,H-2*FR);
-        } else {
+            let tx=CW-FR-TRAY;
+            cx.fillStyle='rgba(100,255,100,0.2)';cx.fillRect(tx,FR,TRAY,CH-2*FR);
+        }else{
             let{x,isTop}=ptVis(d.to);
-            let cy=isTop?FR+PH/2:H-FR-PH/2;
+            let cy=isTop?FR+PH/2:CH-FR-PH/2;
             cx.beginPath();cx.arc(x,cy,CR+3,0,Math.PI*2);cx.fillStyle='rgba(100,255,100,0.3)';cx.fill();
-            cx.strokeStyle='rgba(100,255,100,0.5)';cx.lineWidth=2;cx.stroke();
+            cx.strokeStyle='rgba(100,255,100,0.6)';cx.lineWidth=2;cx.stroke();
             cx.fillStyle='#fff';cx.font='bold 13px Cairo';cx.textAlign='center';cx.textBaseline='middle';
             cx.fillText(d.die,x,cy);
         }
@@ -342,41 +323,39 @@ function drawHighlights(){
 /* ===== واجهة المستخدم ===== */
 function updateUI(){
     let my=!G.isOnline||G.turn===G.myColor;
-    let isMove=G.phase==='move';
-    let isRoll=G.phase==='roll';
+    let isMove=G.phase==='move',isRoll=G.phase==='roll';
     document.getElementById('rollBtn').disabled=!(isRoll&&my);
     document.getElementById('endBtn').disabled=!(isMove&&my&&G.ml.length>0);
     document.getElementById('undoBtn').disabled=!(G.moveStack.length>0&&my);
-    document.getElementById('wInfo').textContent=G.bar.w>0?'خارج:'+G.bar.w:'دخل:'+G.off.w;
-    document.getElementById('bInfo').textContent=G.bar.b>0?'خارج:'+G.bar.b:'دخل:'+G.off.b;
+    /* معلومات اللاعبين */
+    let wOnBoard=0,bOnBoard=0;
+    for(let i=0;i<24;i++){if(G.pts[i].c==='w')wOnBoard+=G.pts[i].n;if(G.pts[i].c==='b')bOnBoard+=G.pts[i].n;}
+    document.getElementById('wInfo').textContent='على الرقعة:'+wOnBoard+' | خارج:'+G.off.w;
+    document.getElementById('bInfo').textContent='على الرقعة:'+bOnBoard+' | خارج:'+G.off.b;
     document.getElementById('whiteTag').classList.toggle('active',G.turn==='w'&&G.phase!=='init');
     document.getElementById('blackTag').classList.toggle('active',G.turn==='b'&&G.phase!=='init');
     let msg='';
-    if(G.phase==='init') msg='هحدد مين يبدأ...';
-    else if(G.phase==='roll') msg=my?'ارمي الزهر':'استنى...';
+    if(G.phase==='init')msg='هحدد مين يبدأ...';
+    else if(G.phase==='roll')msg=my?'ارمي الزهر':'استنى دورك...';
     else if(G.phase==='move'){
-        if(!my) msg='صاحبك بيلعب...';
-        else if(G.bar[G.turn]>0) msg='ادخل حجر من البرة';
-        else msg='اختار حجر - متبقي '+G.ml.length;
-    } else if(G.phase==='over') msg='خلصت!';
+        if(!my)msg='صاحبك بيلعب...';
+        else msg='اختار حجر وحركه - متبقي '+G.ml.length;
+    }else if(G.phase==='over')msg='خلصت!';
     document.getElementById('turnMsg').textContent=msg;
 }
 
 /* ===== منطق اللعبة ===== */
-function entryPt(c,d){return c==='w'?24-d:d-1;}
-function moveDest(c,f,d){return c==='w'?f-d:f+d;}
-
 function canLand(c,i){
     if(i<0||i>23)return false;
     let p=G.pts[i];
-    // الحجر الواحد مينفعش حد يأكله - مفيش ضرب خالص
-    return p.n===0||p.c===c;
+    /* مفيش أكل خالص - لو فيها حجر واحد أو أكتر للخصم مينفعش تنزل */
+    if(p.n>0&&p.c!==c)return false;
+    return true;
 }
 
 function canBearOff(c){
-    if(G.bar[c]>0)return false;
-    let hs=c==='w'?0:18, he=c==='w'?5:23;
-    for(let i=0;i<24;i++){if(i>=hs&&i<=he)continue;if(G.pts[i].c===c&&G.pts[i].n>0)return false;}
+    if(c==='w'){for(let i=6;i<24;i++)if(G.pts[i].c==='w'&&G.pts[i].n>0)return false;}
+    else{for(let i=0;i<18;i++)if(G.pts[i].c==='b'&&G.pts[i].n>0)return false;}
     return true;
 }
 
@@ -387,22 +366,24 @@ function noHigher(c,from){
 }
 
 function getValidDests(from){
-    let ds=[], c=G.turn, seen=new Set();
+    let ds=[],c=G.turn,seen=new Set();
     for(let die of G.ml){
-        if(seen.has(die))continue; seen.add(die);
-        if(from==='bar'){
-            let to=entryPt(c,die);
-            if(to>=0&&to<=23&&canLand(c,to)) ds.push({to,die});
-        } else {
-            let to=moveDest(c,from,die);
-            if(to>=0&&to<=23&&canLand(c,to)){
-                ds.push({to,die});
-            } else if((c==='w'&&to<0)||(c==='b'&&to>23)){
-                if(canBearOff(c)){
-                    let dist=c==='w'?from+1:24-from;
-                    if(die===dist) ds.push({to:'off',die});
-                    else if(die>dist&&noHigher(c,from)) ds.push({to:'off',die});
-                }
+        if(seen.has(die))continue;seen.add(die);
+        if(c==='w'){
+            let to=from-die;
+            if(to>=0&&canLand(c,to))ds.push({to,die});
+            else if(to<0&&canBearOff(c)){
+                let dist=from+1;
+                if(die===dist)ds.push({to:'off',die});
+                else if(die>dist&&noHigher(c,from))ds.push({to:'off',die});
+            }
+        }else{
+            let to=from+die;
+            if(to<=23&&canLand(c,to))ds.push({to,die});
+            else if(to>23&&canBearOff(c)){
+                let dist=24-from;
+                if(die===dist)ds.push({to:'off',die});
+                else if(die>dist&&noHigher(c,from))ds.push({to:'off',die});
             }
         }
     }
@@ -411,28 +392,26 @@ function getValidDests(from){
 
 function hasAnyMove(){
     if(!G.ml.length)return false;
-    if(G.bar[G.turn]>0)return getValidDests('bar').length>0;
     for(let i=0;i<24;i++)if(G.pts[i].c===G.turn&&G.pts[i].n>0&&getValidDests(i).length>0)return true;
     return false;
 }
 
 function execMove(from,to,die){
     let c=G.turn;
-    G.moveStack.push({from,to,die,bar:{...G.bar},off:{...G.off},pts:G.pts.map(p=>({...p})),ml:[...G.ml]});
-    // إزالة من المصدر
-    if(from==='bar') G.bar[c]--;
-    else{G.pts[from].n--;if(!G.pts[from].n)G.pts[from].c=null;}
-    // إضافة للهدف
-    if(to==='off') G.off[c]++;
+    G.moveStack.push({from,to,die,off:{...G.off},pts:G.pts.map(p=>({...p})),ml:[...G.ml]});
+    /* إزالة من المصدر */
+    G.pts[from].n--;if(!G.pts[from].n)G.pts[from].c=null;
+    /* إضافة للهدف */
+    if(to==='off')G.off[c]++;
     else{G.pts[to].n++;G.pts[to].c=c;}
-    // إزالة الزهر
+    /* إزالة الزهر */
     let di=G.ml.indexOf(die);if(di!==-1)G.ml.splice(di,1);
     G.sel=-1;G.validDests=[];
     if(G.isOnline)sendMsg({type:'state',state:getState()});
     render();
     if(G.off[c]===15){G.phase='over';render();showGameOver(c);return;}
     if(!G.ml.length||!hasAnyMove()){
-        if(G.ml.length) toast('مفيش حركات كمان');
+        if(G.ml.length)toast('مفيش حركات كمان');
         setTimeout(()=>endTurn(),500);
     }
 }
@@ -440,7 +419,7 @@ function execMove(from,to,die){
 function undoMove(){
     if(!G.moveStack.length)return;
     let s=G.moveStack.pop();
-    G.bar=s.bar;G.off=s.off;G.pts=s.pts;G.ml=s.ml;
+    G.off=s.off;G.pts=s.pts;G.ml=s.ml;
     G.sel=-1;G.validDests=[];
     if(G.isOnline)sendMsg({type:'state',state:getState()});
     render();
@@ -458,66 +437,54 @@ function forceEndTurn(){
     endTurn();
 }
 
-/* ===== رمي الزهر ===== */
 function handleRoll(){
-    if(G.phase==='roll'){
-        let d1=Math.floor(Math.random()*6)+1;
-        let d2=Math.floor(Math.random()*6)+1;
-        G.dice=[d1,d2];
-        G.ml=d1===d2?[d1,d1,d1,d1]:[d1,d2];
-        G.phase='move';G.moveStack=[];
-        if(G.isOnline)sendMsg({type:'roll',d1,d2});
-        render();
-        if(!hasAnyMove()){toast('مفيش حركات!');setTimeout(()=>endTurn(),1200);}
-    }
+    if(G.phase!=='roll')return;
+    let d1=Math.floor(Math.random()*6)+1;
+    let d2=Math.floor(Math.random()*6)+1;
+    G.dice=[d1,d2];
+    G.ml=d1===d2?[d1,d1,d1,d1]:[d1,d2];
+    G.phase='move';G.moveStack=[];
+    if(G.isOnline)sendMsg({type:'roll',d1,d2});
+    render();
+    if(!hasAnyMove()){toast('مفيش حركات!');setTimeout(()=>endTurn(),1200);}
 }
 
 /* ===== تحديد من يبدأ ===== */
 function doInitRoll(){
     let btn=document.getElementById('initRollBtn');
     if(G.initStep===0){
-        // رميضة الأبيض
         G.initRolls.w=Math.floor(Math.random()*6)+1;
         drawInitDie('initDieW',G.initRolls.w);
-        G.initStep=1;
-        btn.innerHTML='<i class="fas fa-dice"></i> ارمي للأسود';
+        G.initStep=1;btn.innerHTML='<i class="fas fa-dice"></i> ارمي للأسود';
         document.getElementById('initMsg').textContent='الأبيض: '+G.initRolls.w;
         if(G.isOnline)sendMsg({type:'initRoll',step:'w',val:G.initRolls.w});
-    } else if(G.initStep===1){
-        // رميضة الأسود
+    }else if(G.initStep===1){
         G.initRolls.b=Math.floor(Math.random()*6)+1;
         drawInitDie('initDieB',G.initRolls.b);
         if(G.isOnline)sendMsg({type:'initRoll',step:'b',val:G.initRolls.b});
         if(G.initRolls.w>G.initRolls.b){
-            G.turn='w';
-            document.getElementById('initMsg').textContent='الأبيض يبدأ! ('+G.initRolls.w+' مقابل '+G.initRolls.b+')';
-        } else if(G.initRolls.b>G.initRolls.w){
-            G.turn='b';
-            document.getElementById('initMsg').textContent='الأسود يبدأ! ('+G.initRolls.b+' مقابل '+G.initRolls.w+')';
-        } else {
-            document.getElementById('initMsg').textContent='تعادل! ارموا تاني';
-            G.initStep=0;
+            G.turn='w';document.getElementById('initMsg').textContent='الأبيض يبدأ! ('+G.initRolls.w+' مقابل '+G.initRolls.b+')';
+        }else if(G.initRolls.b>G.initRolls.w){
+            G.turn='b';document.getElementById('initMsg').textContent='الأسود يبدأ! ('+G.initRolls.b+' مقابل '+G.initRolls.w+')';
+        }else{
+            document.getElementById('initMsg').textContent='تعادل! ارموا تاني';G.initStep=0;
             btn.innerHTML='<i class="fas fa-dice"></i> ارمي تاني';
-            setTimeout(()=>{drawInitDie('initDieW',0);drawInitDie('initDieB',0);},1000);
+            setTimeout(()=>{drawInitDie('initDieW',0);drawInitDie('initDieB',0);},800);
             return;
         }
-        G.initStep=2;
-        btn.innerHTML='<i class="fas fa-play"></i> يلا نبدأ';
-    } else {
+        G.initStep=2;btn.innerHTML='<i class="fas fa-play"></i> يلا نبدأ';
+    }else{
         document.getElementById('initModal').classList.add('hidden');
-        G.phase='roll';
-        render();
+        G.phase='roll';render();
     }
 }
 
 function drawInitDie(id,val){
-    let c=document.getElementById(id);
-    let x=c.getContext('2d');
+    let c=document.getElementById(id),x=c.getContext('2d');
     x.clearRect(0,0,50,50);
-    if(!val){x.fillStyle='rgba(255,255,255,0.1)';x.strokeStyle='rgba(255,255,255,0.2)';x.lineWidth=1;rRect(x,5,5,40,40,4);x.fill();x.stroke();return;}
+    if(!val){x.fillStyle='rgba(255,255,255,0.08)';x.strokeStyle='rgba(255,255,255,0.15)';x.lineWidth=1;rRect(x,5,5,40,40,4);x.fill();x.stroke();return;}
     x.fillStyle='#fff';x.strokeStyle='#555';x.lineWidth=2;rRect(x,5,5,40,40,4);x.fill();x.stroke();
-    x.fillStyle='#222';
-    let cx2=25,cy2=25,o=10,d=3.5;
+    x.fillStyle='#222';let cx2=25,cy2=25,o=10,d=3.5;
     let dots={1:[[0,0]],2:[[-1,-1],[1,1]],3:[[-1,-1],[0,0],[1,1]],4:[[-1,-1],[1,-1],[-1,1],[1,1]],5:[[-1,-1],[1,-1],[0,0],[-1,1],[1,1]],6:[[-1,-1],[1,-1],[-1,0],[1,0],[-1,1],[1,1]]};
     for(let[dx,dy]of dots[val]){x.beginPath();x.arc(cx2+dx*o,cy2+dy*o,d,0,Math.PI*2);x.fill();}
 }
@@ -530,39 +497,36 @@ function handleInput(clientX,clientY){
     if(G.phase!=='move')return;
     if(G.isOnline&&G.turn!==G.myColor)return;
     let rect=cv.getBoundingClientRect();
-    let sx=W/rect.width,sy=H/rect.height;
-    let mx=(clientX-rect.left)*sx, my=(clientY-rect.top)*sy;
+    let sx=CW/rect.width,sy=CH/rect.height;
+    let mx=(clientX-rect.left)*sx,my=(clientY-rect.top)*sy;
     let clicked=getClickedPt(mx,my);
-    // لو فيه مختار وضغط على وجهة
+    /* لو فيه مختار وضغط على وجهة */
     if(G.sel!==-1&&clicked!==null){
         let dest=G.validDests.find(d=>d.to===clicked);
         if(dest){execMove(G.sel,dest.to,dest.die);return;}
+        /* ضغط على الصينية = خارج */
+        if(clicked==='off'){
+            let dest=G.validDests.find(d=>d.to==='off');
+            if(dest){execMove(G.sel,'off',dest.die);return;}
+        }
     }
-    // اختيار من البار
-    if(clicked==='bar'&&G.bar[G.turn]>0){
-        G.sel='bar';G.validDests=getValidDests('bar');render();return;
-    }
-    // اختيار من نقطة
+    /* اختيار حجر */
     if(typeof clicked==='number'&&G.pts[clicked].c===G.turn&&G.pts[clicked].n>0){
-        if(G.bar[G.turn]>0){toast('لازم تدخل اللي بره الأول');return;}
         G.sel=clicked;G.validDests=getValidDests(clicked);render();return;
     }
     G.sel=-1;G.validDests=[];render();
 }
 
 function getClickedPt(mx,my){
-    // البار
-    let bx=FR+6*PW;
-    if(mx>=bx&&mx<=bx+BAR&&my>=FR&&my<=H-FR)return'bar';
-    // الصينية (خارج)
-    let tx=W-FR-TRAY;
-    if(mx>=tx&&mx<=W-FR&&my>=FR&&my<=H-FR)return'off';
-    // النقاط
+    /* الصينية */
+    let tx=CW-FR-TRAY;
+    if(mx>=tx&&mx<=CW-FR&&my>=FR&&my<=CH-FR)return'off';
+    /* النقاط */
     for(let i=0;i<24;i++){
         let{x,isTop}=ptVis(i);
         if(mx<x-PW/2||mx>x+PW/2)continue;
-        if(isTop&&my>=FR&&my<=FR+PH+25)return i;
-        if(!isTop&&my>=H-FR-PH-25&&my<=H-FR)return i;
+        if(isTop&&my>=FR&&my<=FR+PH+30)return i;
+        if(!isTop&&my>=CH-FR-PH-30&&my<=CH-FR)return i;
     }
     return null;
 }
@@ -573,8 +537,7 @@ function startLocal(){
     initBoard();
     document.getElementById('menuScreen').classList.add('hidden');
     document.getElementById('gameScreen').classList.remove('hidden');
-    render();
-    showInitModal();
+    render();showInitModal();
 }
 
 function showInitModal(){
@@ -593,15 +556,13 @@ function showCreate(){
     document.getElementById('menuScreen').classList.add('hidden');
     document.getElementById('createScreen').classList.remove('hidden');
     document.getElementById('roomCodeDisplay').textContent=G.roomCode;
-    G.peer=new Peer('tawla-'+G.roomCode,{debug:0});
+    try{G.peer=new Peer('tawla-'+G.roomCode,{debug:0});}catch(e){toast('خطأ في إنشاء الغرفة');return;}
     G.peer.on('open',()=>{});
     G.peer.on('connection',c=>{
-        G.conn=c;G.isOnline=true;setupConn();
-        initBoard();
+        G.conn=c;G.isOnline=true;setupConn();initBoard();
         document.getElementById('createScreen').classList.add('hidden');
         document.getElementById('gameScreen').classList.remove('hidden');
-        render();toast('صاحبك دخل!');
-        showInitModal();
+        render();toast('صاحبك دخل!');showInitModal();
     });
     G.peer.on('error',e=>toast('خطأ: '+e.type));
 }
@@ -617,16 +578,15 @@ function doJoin(){
     let code=document.getElementById('joinInput').value.trim().toUpperCase();
     if(code.length<4){toast('اكتب الكود صح');return;}
     G.roomCode=code;G.myColor='b';
-    toast='بتوصل...';
-    G.peer=new Peer({debug:0});
+    toast('بتوصل...');
+    try{G.peer=new Peer({debug:0});}catch(e){toast('خطأ');return;}
     G.peer.on('open',()=>{
         G.conn=G.peer.connect('tawla-'+code);
         G.conn.on('open',()=>{
             G.isOnline=true;setupConn();initBoard();
             document.getElementById('joinScreen').classList.add('hidden');
             document.getElementById('gameScreen').classList.remove('hidden');
-            render();toast('اتصلت!');
-            showInitModal();
+            render();toast('اتصلت!');showInitModal();
         });
         G.conn.on('error',()=>toast('مقدرتش أتوصل'));
     });
@@ -647,11 +607,15 @@ function setupConn(){
         }else if(data.type==='state'){
             applyState(data.state);render();
         }else if(data.type==='initRoll'){
-            if(data.step==='w'){G.initRolls.w=data.val;drawInitDie('initDieW',data.val);G.initStep=1;document.getElementById('initRollBtn').innerHTML='<i class="fas fa-dice"></i> ارمي للأسود';document.getElementById('initMsg').textContent='الأبيض: '+data.val;}
-            else if(data.step==='b'){G.initRolls.b=data.val;drawInitDie('initDieB',data.val);
+            if(data.step==='w'){
+                G.initRolls.w=data.val;drawInitDie('initDieW',data.val);G.initStep=1;
+                document.getElementById('initRollBtn').innerHTML='<i class="fas fa-dice"></i> ارمي للأسود';
+                document.getElementById('initMsg').textContent='الأبيض: '+data.val;
+            }else if(data.step==='b'){
+                G.initRolls.b=data.val;drawInitDie('initDieB',data.val);
                 if(G.initRolls.w>G.initRolls.b){G.turn='w';document.getElementById('initMsg').textContent='الأبيض يبدأ! ('+G.initRolls.w+' مقابل '+G.initRolls.b+')';}
                 else if(G.initRolls.b>G.initRolls.w){G.turn='b';document.getElementById('initMsg').textContent='الأسود يبدأ! ('+G.initRolls.b+' مقابل '+G.initRolls.w+')';}
-                else{document.getElementById('initMsg').textContent='تعادل! ارموا تاني';G.initStep=0;setTimeout(()=>{drawInitDie('initDieW',0);drawInitDie('initDieB',0);},1000);}
+                else{document.getElementById('initMsg').textContent='تعادل! ارموا تاني';G.initStep=0;setTimeout(()=>{drawInitDie('initDieW',0);drawInitDie('initDieB',0);},800);return;}
                 G.initStep=2;document.getElementById('initRollBtn').innerHTML='<i class="fas fa-play"></i> يلا نبدأ';
             }
         }else if(data.type==='restart'){initBoard();render();showInitModal();toast('لعبة جديدة!');}
@@ -659,8 +623,8 @@ function setupConn(){
     G.conn.on('close',()=>{toast('صاحبك فصل');G.isOnline=false;updateUI();});
 }
 
-function getState(){return{pts:G.pts.map(p=>({c:p.c,n:p.n})),bar:{...G.bar},off:{...G.off},turn:G.turn,dice:[...G.dice],ml:[...G.ml],phase:G.phase};}
-function applyState(s){G.pts=s.pts;G.bar=s.bar;G.off=s.off;G.turn=s.turn;G.dice=s.dice;G.ml=s.ml;G.phase=s.phase;G.sel=-1;G.validDests=[];G.moveStack=[];if(G.off[G.turn]===15){G.phase='over';showGameOver(G.turn);}}
+function getState(){return{pts:G.pts.map(p=>({c:p.c,n:p.n})),off:{...G.off},turn:G.turn,dice:[...G.dice],ml:[...G.ml],phase:G.phase};}
+function applyState(s){G.pts=s.pts;G.off=s.off;G.turn=s.turn;G.dice=s.dice;G.ml=s.ml;G.phase=s.phase;G.sel=-1;G.validDests=[];G.moveStack=[];if(G.off[G.turn]===15){G.phase='over';showGameOver(G.turn);}}
 function sendMsg(d){if(G.conn&&G.conn.open)G.conn.send(d);}
 
 function backToMenu(){
@@ -696,9 +660,6 @@ function spawnConfetti(){
         document.body.appendChild(el);setTimeout(()=>el.remove(),5000);
     }
 }
-
-// إصلاح دالة toast في doJoin
-(function(){let origToast=toast;toast=function(m){let t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);};})();
 
 initBoard();
 </script>
